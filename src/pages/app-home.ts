@@ -59,6 +59,8 @@ export class AppHome extends LitElement {
 
   constructor() {
     super();
+    window.localStorage.setItem('SET_BY', new Date().toISOString())
+    window.localStorage.setItem('SET_BY_KEY', 'TEST')
   }
 
   async firstUpdated() {
@@ -86,6 +88,7 @@ export class AppHome extends LitElement {
           <sl-card id="welcomeCard">
             <div slot="header">
               <h2>${this.message}</h2>
+              <h3>${JSON.stringify(localStorage)}</h3>
             </div>
 
             <p>
@@ -104,8 +107,8 @@ export class AppHome extends LitElement {
             </p>
 
             ${'share' in navigator
-              ? html`<sl-button slot="footer" variant="primary" @click="${this.share}">Share this Starter!</sl-button>`
-              : null}
+        ? html`<sl-button slot="footer" variant="primary" @click="${this.share}">Share this Starter!</sl-button>`
+        : null}
           </sl-card>
 
           <sl-card id="infoCard">
