@@ -49,9 +49,24 @@
         '/sw.js'
       );
     }
-    window.localStorage.setItem('SET_BY', new Date().toISOString())
-    window.localStorage.setItem('SET_BY_KEY', 'TEST')
-    document.body.append(JSON.stringify(localStorage))
+    function getLocalItems() {
+      document.body.append(JSON.stringify(localStorage))
+    }
+    var h1 = document.createElement('h1')
+    var div = document.createElement('div')
+    var button = document.createElement('button')
+    button.textContent = 'add Item'
+    button.onclick = function () {
+      var data = prompt('add some data')
+      window.localStorage.setItem(String(data), data)
+    }
+    var button2 = document.createElement('button')
+    button2.textContent = 'get Item'
+    button2.onclick = getLocalItems
+    div.appendChild(h1)
+    div.appendChild(button)
+    document.body.appendChild(div)
+    getLocalItems()
   </script>
 </body>
 
